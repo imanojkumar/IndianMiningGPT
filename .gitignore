@@ -1,0 +1,97 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# Build Artifacts
+
+build/
+dist/
+*.egg-info/
+
+# IDE
+
+.vscode/
+.idea/
+
+# OS Files
+
+.DS_Store
+Thumbs.db
+
+# Logs
+
+logs/
+*.log
+
+# TensorBoard
+
+runs/
+tensorboard/
+
+# Checkpoints
+
+checkpoints/
+*.npz
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+
+# Training Outputs
+
+outputs/
+artifacts/
+results/
+
+# Dataset Cache
+
+.cache/
+datasets_cache/
+
+# Hugging Face
+
+.huggingface/
+
+# Python Tooling
+
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Environment Files
+
+.env
+.env.*
+
+# Temporary Files
+
+*.tmp
+*.bak
+
+# Generated Corpus
+
+data/processed/*
+!data/processed/.gitkeep
+
+# Large Raw Data
+
+data/raw/*
+!data/raw/.gitkeep
+
+# Experiments
+
+experiments/*
+!experiments/.gitkeep
