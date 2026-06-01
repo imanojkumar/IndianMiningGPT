@@ -181,6 +181,36 @@ Decoder-Only Transformer
 
 ---
 
+## Architecture Overview
+
+```text
+                           IndianMiningGPT
+                                    │
+                                    ▼
+                     ┌─────────────────────────┐
+                     │     Mining Corpus       │
+                     │ Regulations • Safety    │
+                     │ ESG • Operations        │
+                     └──────────┬──────────────┘
+                                │
+                                ▼
+                     ┌─────────────────────────┐
+                     │    Byte-Level BPE       │
+                     │      Tokenizer          │
+                     └──────────┬──────────────┘
+                                │
+                                ▼
+                     ┌─────────────────────────┐
+                     │  IndianMiningGPT-20M    │
+                     │ Decoder Transformer     │
+                     │ RoPE • RMSNorm • SwiGLU │
+                     └──────────┬──────────────┘
+                                │
+                 ┌──────────────┼──────────────┐
+                 ▼              ▼              ▼
+        Compliance QA    Safety Knowledge   ESG Support
+```
+
 # Technology Stack
 
 IndianMiningGPT is built using modern JAX-native tooling.
@@ -332,6 +362,45 @@ Evaluation and Benchmarking
 
 Deployment and Applications
 
+
+## Development Workflow
+
+```text
+Phase 0
+Foundation & Architecture Freeze
+           │
+           ▼
+Phase 1
+Corpus Engineering
+           │
+           ▼
+Phase 2
+Tokenizer Development
+           │
+           ▼
+Phase 3
+Model Development
+           │
+           ▼
+Phase 4
+Foundation Pretraining
+           │
+           ▼
+Phase 5
+Mining Domain Adaptation
+           │
+           ▼
+Phase 6
+Instruction Tuning
+           │
+           ▼
+Phase 7
+Evaluation
+           │
+           ▼
+Phase 8
+Deployment
+```
 ---
 
 # Research and Industry Applications
