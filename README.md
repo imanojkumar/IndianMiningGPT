@@ -1,4 +1,12 @@
 # IndianMiningGPT
+![Status](https://img.shields.io/badge/status-active%20development-orange)
+![Phase](https://img.shields.io/badge/phase-0-blue)
+![License](https://img.shields.io/badge/license-Apache%202.0-green)
+![Framework](https://img.shields.io/badge/framework-JAX-red)
+![Model](https://img.shields.io/badge/model-SLM-purple)
+![Domain](https://img.shields.io/badge/domain-Mining%20%26%20Natural%20Resources-brown)
+
+**Specialized AI for Mining Knowledge, Compliance and Operations**
 
 ### A Domain-Specific Small Language Model for the Indian Mining and Natural Resources Sector
 
