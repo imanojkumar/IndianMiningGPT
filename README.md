@@ -299,27 +299,31 @@ The objective is to demonstrate that useful domain-specific language models can 
 
 # Repository Structure
 
-```text
+```
 IndianMiningGPT/
 
 ├── docs/
-├── data/
-├── tokenizer/
-├── models/
-├── training/
-├── evaluation/
-├── inference/
-├── checkpoints/
 ├── notebooks/
 ├── experiments/
 ├── tests/
+├── checkpoints/
+├── data/
+│
+├── src/
+│   ├── data/
+│   ├── tokenizer/
+│   ├── models/
+│   ├── training/
+│   ├── evaluation/
+│   └── inference/
 │
 ├── README.md
 ├── ROADMAP.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── requirements.txt
-└── pyproject.toml
+├── pyproject.toml
+└── .gitignore
 ```
 
 ---
