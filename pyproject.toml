@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "indianmininggpt"
+version = "0.1.0"
+description = "A Domain-Specific Small Language Model for the Indian Mining and Natural Resources Sector"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+
+authors = [
+{ name = "Manoj Kumar" }
+]
+
+keywords = [
+"artificial-intelligence",
+"machine-learning",
+"jax",
+"mining",
+"natural-resources",
+"mining-ai",
+"language-model",
+"slm",
+"llm"
+]
+
+classifiers = [
+"Development Status :: 3 - Alpha",
+"Intended Audience :: Science/Research",
+"Intended Audience :: Developers",
+"License :: OSI Approved :: Apache Software License",
+"Programming Language :: Python :: 3",
+"Programming Language :: Python :: 3.12",
+"Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/imanojkumar/IndianMiningGPT"
+Repository = "https://github.com/imanojkumar/IndianMiningGPT"
+Issues = "https://github.com/imanojkumar/IndianMiningGPT/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
