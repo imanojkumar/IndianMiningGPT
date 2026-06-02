@@ -38,6 +38,26 @@ The project follows five guiding principles:
 | Evaluation            | Not Started |
 | Deployment            | Not Started |
 
+
+
+```
+[x] Inventory Builder
+[x] Metadata Enrichment
+[x] Title Extraction
+[x] Extraction Assessment
+[x] Text Extraction
+[x] Corpus Registry
+[x] Document Classification
+[x] Chunk Generation
+
+[ ] Embedding Generation
+[ ] Vector Database
+[ ] Semantic Search
+[ ] RAG Pipeline
+[ ] Chat Interface
+
+```
+
 ---
 
 # Phase 0 — Foundation & Architecture Freeze
