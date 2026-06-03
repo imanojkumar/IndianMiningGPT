@@ -523,3 +523,58 @@ Production-ready release.
 IndianMiningGPT is not intended to be the largest model.
 
 It is intended to be one of the most specialized, practical, and deployable open-source language models for the Indian mining and natural resources sector.
+
+
+## Phase 8 — Corpus Cleanup & Optimization
+
+Purpose:
+Improve retrieval quality by identifying and removing noisy chunks and OCR artifacts.
+
+Planned Activities
+
+### Chunk Quality Assessment
+
+Compute:
+
+- alphabetic ratio
+- unique token ratio
+- language confidence
+- OCR noise score
+- unicode corruption score
+
+### Language Detection
+
+Classify chunks as:
+
+- English
+- Hindi
+- Mixed
+
+### Noise Filtering
+
+Identify:
+
+- OCR damaged chunks
+- Gazette extraction artifacts
+- corrupted unicode text
+- low-information chunks
+
+### Quality Labels
+
+Assign:
+
+- GOOD
+- FAIR
+- POOR
+
+### Optimized Index Build
+
+Future FAISS versions may exclude:
+
+- POOR chunks
+
+Expected Benefits
+
+- Higher retrieval precision
+- Better RAG responses
+- Lower hallucination risk
