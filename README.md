@@ -142,6 +142,26 @@ Version 1 focuses exclusively on the Indian mining and natural resources sector.
 
 ---
 
+## Enterprise Ready Architecture
+
+IndianMiningGPT is being designed to support fully local,
+air-gapped deployments.
+
+All major components can operate locally:
+
+- BGE-M3 Embeddings
+- FAISS Vector Search
+- Cross Encoder Reranking
+- Ollama LLM Runtime
+- Gemma / Qwen / Llama Models
+
+This enables deployment on confidential corporate datasets
+without transmitting documents, queries, or answers to
+external cloud providers.
+
+------------------
+
+
 # Model Family
 
 IndianMiningGPT is designed as a scalable model family.
@@ -420,6 +440,26 @@ Potential applications include:
 * Operational knowledge management
 
 ---
+
+
+## Phase 12
+
+Enterprise Deployment
+
+- Docker Support
+- GPU Server Deployment
+- Qdrant Integration
+- LDAP Authentication
+- User Management
+- Audit Logging
+- Multi-User Support
+- Document Access Controls
+- Air-Gapped Installation Kit
+
+----------
+
+
+
 
 # Contributing
 

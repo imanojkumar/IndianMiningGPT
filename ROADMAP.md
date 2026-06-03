@@ -604,3 +604,69 @@ Logging & Silent Startup
 - Global VERBOSE flag
 - Lazy model loading
 - Silent CLI startup mode
+
+
+----------
+
+
+# Enterprise Deployment Roadmap
+
+## Vision
+
+IndianMiningGPT will support fully air-gapped enterprise deployments
+for mining companies, government agencies, consultants, and industrial
+organizations handling confidential information.
+
+## Key Objectives
+
+- Zero data leaves customer infrastructure
+- No dependency on OpenAI APIs
+- No dependency on cloud LLM providers
+- No document uploads to third-party services
+- Full control over embeddings, vector databases, and models
+- Regulatory and compliance-friendly architecture
+- Support for confidential operational and ESG datasets
+
+## Enterprise Architecture
+
+User
+ ↓
+Web Interface
+ ↓
+IndianMiningGPT
+ ↓
+FAISS / Qdrant
+ ↓
+Local Embedding Models
+ ↓
+Local Cross Encoder
+ ↓
+Local LLM (Ollama)
+
+Supported Models:
+
+- Gemma 3
+- Qwen 3
+- DeepSeek
+- Llama
+
+Deployment Modes:
+
+- Laptop
+- Workstation
+- Private Server
+- On-Premise Datacenter
+- Air-Gapped Environment
+
+Target Industries:
+
+- Mining
+- Metals
+- Cement
+- Oil & Gas
+- Manufacturing
+- Government
+
+---------------
+
+
