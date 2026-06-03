@@ -68,3 +68,75 @@ One to five stars would be given to the mines.
 
 The best performing leases would be given 5 Stars.
 ```
+
+## Validation Results
+```
+| Component            | Status |
+| -------------------- | ------ |
+| Corpus Extraction    | ✅      |
+| Chunking             | ✅      |
+| Inventory Generation | ✅      |
+| Embedding Generation | ✅      |
+| FAISS Index Creation | ✅      |
+| Retrieval            | ✅      |
+| Reranking            | ✅      |
+| Context Builder      | ✅      |
+| Prompt Builder       | ✅      |
+| Ollama Integration   | ✅      |
+| Gemma 3 Inference    | ✅      |
+| End-to-End RAG       | ✅      |
+
+```
+
+---
+
+## Performance Summary
+```
+| Metric              | Value               |
+| ------------------- | ------------------- |
+| Documents Processed | 45                  |
+| Chunks Generated    | 2,990               |
+| Embedding Model     | BGE-M3              |
+| Reranker            | MiniLM CrossEncoder |
+| LLM                 | Gemma 3 4B          |
+| Vector Store        | FAISS               |
+| Deployment Mode     | Local GPU           |
+| Internet Dependency | None                |
+
+```
+--------
+
+## Outcome
+
+The first fully operational version of IndianMiningGPT successfully answers mining-domain questions using retrieved corpus evidence and local LLM generation.
+
+This milestone confirms successful integration of retrieval, reranking, context construction, prompt generation, and local inference into a single production-ready RAG workflow.
+
+------------
+
+## Next Phase
+
+### Phase 7.3
+
+### Source-Aware Answers
+
+Objectives:
+
+- Attach citations to generated answers.
+- Display supporting source files.
+- Improve answer traceability.
+- Increase trustworthiness of generated responses.
+- Prepare for regulatory and compliance use cases.
+
+------
+
+Version Tag: v0.7-rag-complete
+
+Date: June 2026
+
+
+This is documentation-grade and suitable for GitHub, future contributors, academic reporting, and project audits.
+
+
+
+
