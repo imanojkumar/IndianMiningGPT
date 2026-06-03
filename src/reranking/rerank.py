@@ -1,40 +1,32 @@
 """
 IndianMiningGPT
-Phase 5.3 Reranker
+Phase 10.6
+
+Reranker
+(Lazy Loaded)
 """
 
-import torch
-from sentence_transformers import CrossEncoder
-
-MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+from src.models.model_manager import (
+    ModelManager
+)
 
 
 class Reranker:
 
     def __init__(self):
 
-        print(
-            "Loading Cross Encoder..."
-        )
+        self.model = None
 
-        device = (
-            "cuda"
-            if torch.cuda.is_available()
-            else "cpu"
-        )
+    def _get_model(self):
 
-        print(
-            f"Device: {device}"
-        )
+        if self.model is None:
 
-        self.model = CrossEncoder(
-            MODEL_NAME,
-            device=device
-        )
+            self.model = (
+                ModelManager
+                .reranker_model()
+            )
 
-        print(
-            "Cross Encoder Loaded"
-        )
+        return self.model
 
     def rerank(
         self,
@@ -46,12 +38,19 @@ class Reranker:
         if not retrieved_docs:
             return []
 
+        model = (
+            self._get_model()
+        )
+
         pairs = [
-            (query, doc["text"])
+            (
+                query,
+                doc["text"]
+            )
             for doc in retrieved_docs
         ]
 
-        scores = self.model.predict(
+        scores = model.predict(
             pairs,
             batch_size=16,
             show_progress_bar=False
@@ -75,7 +74,8 @@ class Reranker:
             )
 
         ranked_docs.sort(
-            key=lambda x: x["rerank_score"],
+            key=lambda x:
+            x["rerank_score"],
             reverse=True
         )
 
