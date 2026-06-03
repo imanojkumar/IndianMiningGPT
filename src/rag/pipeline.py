@@ -1,13 +1,15 @@
 """
 IndianMiningGPT
-Phase 7.2
+Phase 7.3
 End-to-End RAG Pipeline
+with Source Citations
 """
 
 from src.retrieval.retrieve import retrieve
 from src.reranking.rerank import Reranker
 from src.rag.context_builder import ContextBuilder
 from src.rag.prompt_builder import PromptBuilder
+from src.rag.citation_builder import CitationBuilder
 from src.llm.answer_generator import AnswerGenerator
 
 
@@ -15,7 +17,9 @@ class IndianMiningGPT:
 
     def __init__(self):
 
-        print("\nInitializing IndianMiningGPT...\n")
+        print(
+            "\nInitializing IndianMiningGPT...\n"
+        )
 
         self.reranker = Reranker()
 
@@ -26,9 +30,13 @@ class IndianMiningGPT:
 
         self.prompt_builder = PromptBuilder()
 
+        self.citation_builder = CitationBuilder()
+
         self.answer_generator = AnswerGenerator()
 
-        print("\nIndianMiningGPT Ready\n")
+        print(
+            "\nIndianMiningGPT Ready\n"
+        )
 
     def ask(
         self,
@@ -37,10 +45,18 @@ class IndianMiningGPT:
         rerank_k=5
     ):
 
+        # --------------------------------------------------
+        # Retrieve
+        # --------------------------------------------------
+
         retrieved_docs = retrieve(
             query,
             top_k=retrieve_k
         )
+
+        # --------------------------------------------------
+        # Rerank
+        # --------------------------------------------------
 
         ranked_docs = self.reranker.rerank(
             query,
@@ -48,22 +64,48 @@ class IndianMiningGPT:
             top_k=rerank_k
         )
 
+        # --------------------------------------------------
+        # Build Context
+        # --------------------------------------------------
+
         context = self.context_builder.build(
             query,
             ranked_docs
         )
+
+        # --------------------------------------------------
+        # Build Prompt
+        # --------------------------------------------------
 
         prompt = self.prompt_builder.build(
             query,
             context
         )
 
+        # --------------------------------------------------
+        # Generate Answer
+        # --------------------------------------------------
+
         answer = self.answer_generator.answer(
             prompt
         )
 
+        # --------------------------------------------------
+        # Build Citations
+        # --------------------------------------------------
+
+        citations = self.citation_builder.build(
+            ranked_docs
+        )
+
+        final_answer = (
+            answer
+            + "\n"
+            + citations
+        )
+
         return {
             "query": query,
-            "answer": answer,
+            "answer": final_answer,
             "sources": ranked_docs
         }
