@@ -359,6 +359,22 @@ Domain-adapted model available.
 
 ---
 
+Phase 5.3 — Reranking
+
+Model:
+cross-encoder/ms-marco-MiniLM-L-6-v2
+
+Purpose:
+Improve retrieval relevance after FAISS search.
+
+Input:
+Top 20 retrieved chunks
+
+Output:
+Top 5 reranked chunks
+
+---
+
 # Phase 6 — Instruction Tuning
 
 ## Objective
