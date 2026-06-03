@@ -70,7 +70,7 @@ The best performing leases would be given 5 Stars.
 ```
 
 ## Validation Results
-```
+
 | Component            | Status |
 | -------------------- | ------ |
 | Corpus Extraction    | ✅      |
@@ -86,12 +86,12 @@ The best performing leases would be given 5 Stars.
 | Gemma 3 Inference    | ✅      |
 | End-to-End RAG       | ✅      |
 
-```
+
 
 ---
 
 ## Performance Summary
-```
+
 | Metric              | Value               |
 | ------------------- | ------------------- |
 | Documents Processed | 45                  |
@@ -103,7 +103,7 @@ The best performing leases would be given 5 Stars.
 | Deployment Mode     | Local GPU           |
 | Internet Dependency | None                |
 
-```
+
 --------
 
 ## Outcome
