@@ -1,12 +1,20 @@
 """
 IndianMiningGPT
-Phase 8.4
+Phase 9.2
 
-Memory Aware Chat Pipeline
+Conversational Chat Pipeline
+with Query Rewriting
 """
 
+from src.rag.query_rewriter import (
+    QueryRewriter
+)
+
 from src.retrieval.retrieve import retrieve
-from src.reranking.rerank import Reranker
+
+from src.reranking.rerank import (
+    Reranker
+)
 
 from src.rag.context_builder import (
     ContextBuilder
@@ -41,6 +49,10 @@ class ChatPipeline:
             ConversationMemory()
         )
 
+        self.rewriter = (
+            QueryRewriter()
+        )
+
         self.reranker = (
             Reranker()
         )
@@ -73,29 +85,60 @@ class ChatPipeline:
         query
     ):
 
+        # ----------------------------------
+        # Conversation Memory
+        # ----------------------------------
+
+        memory_text = (
+            self.memory.get_history_text()
+        )
+
+        # ----------------------------------
+        # Query Rewriting
+        # ----------------------------------
+
+        rewritten_query = (
+            self.rewriter.rewrite(
+                query,
+                memory_text
+            )
+        )
+
+        # ----------------------------------
+        # Retrieval
+        # ----------------------------------
+
         retrieved_docs = retrieve(
-            query,
+            rewritten_query,
             top_k=20
         )
 
+        # ----------------------------------
+        # Reranking
+        # ----------------------------------
+
         ranked_docs = (
             self.reranker.rerank(
-                query,
+                rewritten_query,
                 retrieved_docs,
                 top_k=5
             )
         )
 
+        # ----------------------------------
+        # Context Building
+        # ----------------------------------
+
         context = (
             self.context_builder.build(
-                query,
+                rewritten_query,
                 ranked_docs
             )
         )
 
-        memory_text = (
-            self.memory.get_history_text()
-        )
+        # ----------------------------------
+        # Prompt Building
+        # ----------------------------------
 
         prompt = (
             self.prompt_builder.build(
@@ -105,11 +148,19 @@ class ChatPipeline:
             )
         )
 
+        # ----------------------------------
+        # Answer Generation
+        # ----------------------------------
+
         answer = (
             self.answer_generator.answer(
                 prompt
             )
         )
+
+        # ----------------------------------
+        # Source Citations
+        # ----------------------------------
 
         citations = (
             self.citation_builder.build(
@@ -117,10 +168,18 @@ class ChatPipeline:
             )
         )
 
+        # ----------------------------------
+        # Save Conversation Turn
+        # ----------------------------------
+
         self.memory.add_turn(
             query,
             answer
         )
+
+        # ----------------------------------
+        # Final Response
+        # ----------------------------------
 
         return (
             answer
