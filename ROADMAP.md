@@ -594,3 +594,13 @@ Expected Benefits
 - Higher retrieval precision
 - Better RAG responses
 - Lower hallucination risk
+
+
+## Phase 8.6
+
+Logging & Silent Startup
+
+- Replace print statements with logging
+- Global VERBOSE flag
+- Lazy model loading
+- Silent CLI startup mode
