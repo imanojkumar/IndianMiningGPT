@@ -1,8 +1,8 @@
 """
 IndianMiningGPT
-Phase 7.3
+Phase 7.4
 End-to-End RAG Pipeline
-with Source Citations
+with Source Citations and Validation
 """
 
 from src.retrieval.retrieve import retrieve
@@ -10,6 +10,7 @@ from src.reranking.rerank import Reranker
 from src.rag.context_builder import ContextBuilder
 from src.rag.prompt_builder import PromptBuilder
 from src.rag.citation_builder import CitationBuilder
+from src.rag.answer_validator import AnswerValidator
 from src.llm.answer_generator import AnswerGenerator
 
 
@@ -22,6 +23,8 @@ class IndianMiningGPT:
         )
 
         self.reranker = Reranker()
+
+        self.validator = AnswerValidator()
 
         self.context_builder = ContextBuilder(
             max_chunks=5,
@@ -91,6 +94,15 @@ class IndianMiningGPT:
         )
 
         # --------------------------------------------------
+        # Validate Answer
+        # --------------------------------------------------
+
+        validation = self.validator.validate(
+            answer,
+            context
+        )
+
+        # --------------------------------------------------
         # Build Citations
         # --------------------------------------------------
 
@@ -98,8 +110,31 @@ class IndianMiningGPT:
             ranked_docs
         )
 
+        # --------------------------------------------------
+        # Validation Summary
+        # --------------------------------------------------
+
+        validation_text = "\n\nVALIDATION\n"
+
+        if validation["issues"]:
+
+            validation_text += "\n".join(
+                validation["issues"]
+            )
+
+        else:
+
+            validation_text += (
+                "No issues detected"
+            )
+
+        # --------------------------------------------------
+        # Final Answer
+        # --------------------------------------------------
+
         final_answer = (
             answer
+            + validation_text
             + "\n"
             + citations
         )
@@ -107,5 +142,6 @@ class IndianMiningGPT:
         return {
             "query": query,
             "answer": final_answer,
-            "sources": ranked_docs
+            "sources": ranked_docs,
+            "validation": validation
         }
