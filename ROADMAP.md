@@ -50,10 +50,10 @@ The project follows five guiding principles:
 [x] Document Classification
 [x] Chunk Generation
 
-[ ] Embedding Generation
-[ ] Vector Database
-[ ] Semantic Search
-[ ] RAG Pipeline
+[x] Embedding Generation
+[x] Vector Database
+[x] Semantic Search
+[x] RAG Pipeline
 [ ] Chat Interface
 
 ```
@@ -670,3 +670,10 @@ Target Industries:
 ---------------
 
 
+## Phase 9.1 – Query Rewriter
+Status: COMPLETE
+
+## Phase 9.2 – Conversational Retrieval
+Status: COMPLETE
+
+------------
